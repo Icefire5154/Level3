@@ -3,7 +3,7 @@
 int main() 
 {
     //Start of current storyline
-    std::cout << "Quick,  we need your help to take down the ships security systems ASAP!";
+    std::cout << "Quick, we need your help to take down the ships security systems ASAP!";
     std::cout << std::endl;
     std::cout << "Up ahead on your left, thats the door to the security room!";
     std::cout << std::endl; 
@@ -15,21 +15,33 @@ int main()
 
 
     //Declaring 3 number combo
-    int a = 8;
-    int b = 5;
-    int c = 2;
+    int CodeA = 8;
+    int CodeB = 5;
+    int CodeC = 2;
 
     //Print sum and product
-    int sum = a + b + c;
-    int product = a * b * c;
+    int CodeSum = CodeA + CodeB + CodeC;
+    int CodeProduct = CodeA * CodeB * CodeC;
 
 
     //hints
     std::cout << std::endl;
-    std::cout << "  +   If you add the numbers together, you'll get ";
-    std::cout << sum << std::endl;
-    std::cout << "  +   When you multiply the combo, it'll give you ";
-    std::cout << product << std::endl;
+    std::cout << "  +   If you add the numbers together, you'll get " << CodeSum << std::endl;
+    std::cout << "  +   When you multiply the combo, it'll give you " << CodeProduct << std::endl;
+
+    int GuessA, GuessB, GuessC;
+
+    std::cin >> GuessA; 
+    std::cin >> GuessB;
+    std::cin >> GuessC;
+    std::cout << "you entered: " << GuessA << GuessB << GuessC;
+
+    int GuessSum = GuessA + GuessB + GuessC;
+    
+
+    int GuessProduct = GuessA * GuessB * GuessC;
+
+
 
     return 0;
 }
