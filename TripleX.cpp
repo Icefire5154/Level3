@@ -1,17 +1,23 @@
 #include <iostream>
 
-int main() 
+
+void PrintIntro()
 {
-    //Start of current storyline
-    std::cout << "Quick, we need your help to take down the ships security systems ASAP!";
-    std::cout << std::endl;
-    std::cout << "Up ahead on your left, thats the door to the security room!";
-    std::cout << std::endl; 
-    std::cout << "Damn, looks like you'll need enter a number combination on the terminal to get in.";
-    std::cout << std::endl;
-    std::cout << "You have to figure out which 3 numbers will get you into the security room, and FAST.";
-    std::cout << std::endl;
-    std::cout << "We've provided you with some hints below: "; 
+    std::cout << "\n First Door Puzzle";
+}
+
+
+bool PlayGame()
+{
+
+    PrintIntro();
+
+ //Start of current storyline
+    std::cout << "\n \n Quick, we need your help to take down the ships security systems ASAP! \n";
+    std::cout << "Up ahead on your left, that door leads to the security room \n";
+    std::cout << "Damn, looks like you'll need enter a number combination on the terminal to get in \n";
+    std::cout << "You have to figure out which 3 numbers will get you into the security room, STAT \n";
+    std::cout << "We've provided you with some hints below: \n"; 
 
 
     //Declaring 3 number combo
@@ -25,30 +31,49 @@ int main()
 
 
     //hints
-    std::cout << std::endl;
     std::cout << "  +   If you add the numbers together, you'll get " << CodeSum << std::endl;
     std::cout << "  +   When you multiply the combo, it'll give you " << CodeProduct << std::endl;
 
+    //Store player guess
     int GuessA, GuessB, GuessC;
+    std::cin >> GuessA  >> GuessB >> GuessC;
 
-    std::cin >> GuessA; 
-    std::cin >> GuessB;
-    std::cin >> GuessC;
-    std::cout << "you entered: " << GuessA << GuessB << GuessC;
-
-    int GuessSum = GuessA + GuessB + GuessC;
-    
-
+    int GuessSum = GuessA + GuessB + GuessC; 
     int GuessProduct = GuessA * GuessB * GuessC;
 
+    //Enter code into keypad
+    if(GuessSum == CodeSum && GuessProduct == CodeProduct) 
+    {
+        std::cout << "ACCESS GRANTED";
+        return true;
+    }
+    else
+    {
+        std::cout << "ACCESS DENIED";
+        return false;
+    }
 
+    
+}
+
+
+int main() 
+{
+    while(true) 
+    {
+        bool bPuzzleComplete = PlayGame();
+        std::cin.clear(); //clear errors
+        std::cin.ignore(); //discard buffer
+    }
 
     return 0;
 }
 
+//Ctrl+C ends the program
 
 
-/* 3D first person puzzle shooter
+
+/* 3D first person shooter with puzzle mechanics
 
 
 general ideas
