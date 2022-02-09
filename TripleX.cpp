@@ -1,29 +1,34 @@
 #include <iostream>
+#include <ctime>
 
 
-void PrintIntro()
+void PrintIntro(int Difficulty)
 {
-    std::cout << "\n First Door Puzzle";
+     //Start of current storyline
+    std::cout << "Quick, we need your help to take down the ships security systems ASAP! \n";
+    std::cout << "Up ahead on your left, that door leads to the security room \n";
+    std::cout << "Damn, looks like it's level " << Difficulty; 
+    std::cout << " security so you'll need enter a number combination on the keypad to get in \n";
+    std::cout << "You have to figure out which three numbers will get you into the security room \n";
+    std::cout << "We've provided you with some hints below: \n"; 
 }
 
 
-bool PlayGame()
+bool PlayGame(int Difficulty)
 {
 
-    PrintIntro();
-
- //Start of current storyline
-    std::cout << "\n \n Quick, we need your help to take down the ships security systems ASAP! \n";
-    std::cout << "Up ahead on your left, that door leads to the security room \n";
-    std::cout << "Damn, looks like you'll need enter a number combination on the terminal to get in \n";
-    std::cout << "You have to figure out which 3 numbers will get you into the security room, STAT \n";
-    std::cout << "We've provided you with some hints below: \n"; 
-
+    PrintIntro(Difficulty);
 
     //Declaring 3 number combo
-    int CodeA = 8;
-    int CodeB = 5;
-    int CodeC = 2;
+    int CodeA = rand() % Difficulty + Difficulty;
+    int CodeB = rand() % Difficulty + Difficulty;
+    int CodeC = rand() % Difficulty + Difficulty;
+    /*Difficulty = rand() % Diff + Diff range
+    2 = 2-3
+    3 = 3-5
+    4 = 4-7 
+    5 = 5-9
+    */
 
     //Print sum and product
     int CodeSum = CodeA + CodeB + CodeC;
@@ -31,6 +36,7 @@ bool PlayGame()
 
 
     //hints
+    std::cout << "  +   Enter the numbers in the order: # # #, with spaces between each number \n";
     std::cout << "  +   If you add the numbers together, you'll get " << CodeSum << std::endl;
     std::cout << "  +   When you multiply the combo, it'll give you " << CodeProduct << std::endl;
 
@@ -44,7 +50,7 @@ bool PlayGame()
     //Enter code into keypad
     if(GuessSum == CodeSum && GuessProduct == CodeProduct) 
     {
-        std::cout << "ACCESS GRANTED";
+        std::cout << "ACCESS GRANTED \n";
         return true;
     }
     else
@@ -59,12 +65,25 @@ bool PlayGame()
 
 int main() 
 {
-    while(true) 
+    srand(time(NULL)); //random combo based on time of day
+
+    int LevelDifficulty = 2;
+    int MaxDifficulty = 5;
+
+    while(LevelDifficulty <= MaxDifficulty) //Loop until all levels are completed
     {
-        bool bPuzzleComplete = PlayGame();
+        bool bPuzzleComplete = PlayGame(LevelDifficulty);
         std::cin.clear(); //clear errors
         std::cin.ignore(); //discard buffer
+
+        if (bPuzzleComplete)
+        {
+            ++LevelDifficulty;
+        }
+        
     }
+
+    std::cout << "DOOR UNLOCKED";
 
     return 0;
 }
