@@ -1,2 +1,2 @@
 # TripleX
- learning and testing code for the game with a primary focus on the 3? door puzzles
+ learning C++ and modifying/testing code for a security door's number combination puzzle for a new game
