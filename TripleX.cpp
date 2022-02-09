@@ -4,7 +4,7 @@
 
 void PrintIntro(int Difficulty)
 {
-     //Start of current storyline
+     //Start of current storyline, will be changed for actual game
     std::cout << "Quick, we need your help to take down the ships security systems ASAP! \n";
     std::cout << "Up ahead on your left, that door leads to the security room \n";
     std::cout << "Damn, looks like it's level " << Difficulty; 
@@ -67,6 +67,7 @@ int main()
 {
     srand(time(NULL)); //random combo based on time of day
 
+    //Modify the range of the difficulty
     int LevelDifficulty = 2;
     int MaxDifficulty = 5;
 
@@ -89,6 +90,16 @@ int main()
 }
 
 //Ctrl+C ends the program
+
+//will need to add a different difficulty or range of difficulties per door if we use the same system for all doors
+
+
+
+
+
+
+
+
 
 
 
